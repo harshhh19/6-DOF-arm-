@@ -1,0 +1,21 @@
+services:
+  simulation:
+    build: .
+    image: ur5e-sim:latest
+    container_name: ur5e-sim
+    runtime: nvidia
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    network_mode: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: >
+      bash -c "source /workspace/install/setup.bash && ros2 launch ur_simulation_gz ur_sim_control.launch.py ur_type:=ur5e gazebo_gui:=false"
