@@ -88,6 +88,3 @@ Type your command (e.g., *"Take the object to the inspection table"*) and watch 
 
 <br/>
 
-<div align="center">
-  <i>Developed for showcase by Harshhh</i>
-</div>
